@@ -20,7 +20,7 @@ code {
   justify-content: center;
 }
 
-.login, .nav {
+.login, .nav, .search {
   display: flex;
   gap: 10px;
 }

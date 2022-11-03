@@ -5,7 +5,7 @@ import { createUser } from '../services/userAPI';
 
 export default class Login extends Component {
   state = {
-    userName: '',
+    username: '',
     buttonLogin: true,
     loading: false,
     redirect: false,
@@ -13,23 +13,23 @@ export default class Login extends Component {
 
   checkLogin = (event) => {
     const { value } = event.target;
-    const minValue = 3;
-    const verifyLength = value.length < minValue;
+    const minLength = 3;
+    const verifyLength = value.length < minLength;
 
     this.setState({
-      userName: value,
+      username: value,
       buttonLogin: verifyLength,
     });
   };
 
   handleClick = async () => {
-    const { userName } = this.state;
+    const { username } = this.state;
 
     this.setState({
       loading: true,
     });
 
-    await createUser({ name: userName });
+    await createUser({ name: username });
 
     this.setState({
       redirect: true,
@@ -43,15 +43,12 @@ export default class Login extends Component {
 
     return (
       <div className="login" data-testid="page-login">
-        <label htmlFor="input-name">
-          Nome
-          <input
-            id="input-name"
-            data-testid="login-name-input"
-            type="text"
-            onChange={ this.checkLogin }
-          />
-        </label>
+        <input
+          id="input-username"
+          data-testid="login-name-input"
+          type="text"
+          onChange={ this.checkLogin }
+        />
 
         <button
           id="button-login"
