@@ -22,14 +22,6 @@ export default class Login extends Component {
     });
   };
 
-  shouldRedirect = () => {
-    this.setState({
-      redirect: true,
-    }, this.setState({
-      redirect: false,
-    }));
-  };
-
   handleClick = async () => {
     const { userName } = this.state;
 
@@ -38,7 +30,10 @@ export default class Login extends Component {
     });
 
     await createUser({ name: userName });
-    this.shouldRedirect();
+
+    this.setState({
+      redirect: true,
+    });
   };
 
   render() {
@@ -47,9 +42,9 @@ export default class Login extends Component {
     if (loading) return <Loading />;
 
     return (
-      <div data-testid="page-login">
+      <div className="login" data-testid="page-login">
         <label htmlFor="input-name">
-          Nome:
+          Nome
           <input
             id="input-name"
             data-testid="login-name-input"

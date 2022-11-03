@@ -19,3 +19,8 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.login, .nav {
+  display: flex;
+  gap: 10px;
+}
