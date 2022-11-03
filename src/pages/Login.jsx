@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Loading from '../components/Loading';
 import { createUser } from '../services/userAPI';
 
 export default class Login extends Component {
@@ -21,6 +22,14 @@ export default class Login extends Component {
     });
   };
 
+  shouldRedirect = () => {
+    this.setState({
+      redirect: true,
+    }, this.setState({
+      redirect: false,
+    }));
+  };
+
   handleClick = async () => {
     const { userName } = this.state;
 
@@ -29,46 +38,35 @@ export default class Login extends Component {
     });
 
     await createUser({ name: userName });
-
-    this.setState({
-      redirect: true,
-    }, this.setState({
-      redirect: false,
-    }));
+    this.shouldRedirect();
   };
 
   render() {
     const { buttonLogin, loading, redirect } = this.state;
     if (redirect) return <Redirect to="/search" />;
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="page-login">
-        { loading
-          ? <span>Carregando...</span>
-          : (
-            <div>
-              <label htmlFor="input-name">
-                Nome:
-                <input
-                  id="input-name"
-                  data-testid="login-name-input"
-                  type="text"
-                  onChange={ this.checkLogin }
-                />
-              </label>
+        <label htmlFor="input-name">
+          Nome:
+          <input
+            id="input-name"
+            data-testid="login-name-input"
+            type="text"
+            onChange={ this.checkLogin }
+          />
+        </label>
 
-              <button
-                id="button-login"
-                data-testid="login-submit-button"
-                type="button"
-                disabled={ buttonLogin }
-                onClick={ this.handleClick }
-              >
-                Entrar
-              </button>
-            </div>
-          )}
-
+        <button
+          id="button-login"
+          data-testid="login-submit-button"
+          type="button"
+          disabled={ buttonLogin }
+          onClick={ this.handleClick }
+        >
+          Entrar
+        </button>
       </div>
     );
   }
