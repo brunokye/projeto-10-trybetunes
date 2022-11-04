@@ -25,15 +25,9 @@ export default class Login extends Component {
   handleClick = async () => {
     const { username } = this.state;
 
-    this.setState({
-      loading: true,
-    });
-
+    this.setState({ loading: true });
     await createUser({ name: username });
-
-    this.setState({
-      redirect: true,
-    });
+    this.setState({ redirect: true });
   };
 
   render() {

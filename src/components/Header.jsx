@@ -23,15 +23,18 @@ export default class Header extends Component {
     if (loading) return <Loading />;
 
     return (
-      <header className="nav" data-testid="header-component">
+      <header data-testid="header-component">
+        <h1>TrybeTunes</h1>
         <span data-testid="header-user-name">
-          Opa,
+          Perdemo,
           {' '}
           {user}
         </span>
-        <Link data-testid="link-to-search" to="/search">Search</Link>
-        <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-        <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+        <div className="nav">
+          <Link data-testid="link-to-search" to="/search">Search</Link>
+          <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+          <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+        </div>
       </header>
     );
   }
