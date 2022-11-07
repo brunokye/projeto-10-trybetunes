@@ -30,3 +30,9 @@ code {
   display: flex;
   gap: 10px;
 }
+
+.music-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
