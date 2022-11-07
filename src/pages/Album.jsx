@@ -36,12 +36,13 @@ export default class Album extends Component {
           <img src={ image } alt={ album } />
           <h3 data-testid="album-name">{album}</h3>
           <p data-testid="artist-name">{artist}</p>
-          { tracks.map(({ trackId, trackName, previewUrl }) => (
+          { tracks.map((music) => (
             <MusicCard
-              key={ trackId }
-              trackId={ trackId }
-              trackName={ trackName }
-              previewUrl={ previewUrl }
+              key={ music.trackId }
+              music={ music }
+              trackId={ music.trackId }
+              trackName={ music.trackName }
+              previewUrl={ music.previewUrl }
             />
           ))}
         </div>
