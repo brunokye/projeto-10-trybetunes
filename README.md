@@ -15,8 +15,8 @@ Neste projeto você irá criar o TrybeTunes, uma aplicação capaz de reproduzir
 ## Projeto
 
 <div display="inline">
-<img src="https://i.imgur.com/i4i0C4G.png" alt="Search" width="500px" heigth="261px">
-<img src="https://i.imgur.com/smQrzjs.png" alt="Album" width="500px" heigth="261px">
+<img src="https://i.imgur.com/i4i0C4G.png" alt="Search" width="450px" heigth="235px">
+<img src="https://i.imgur.com/smQrzjs.png" alt="Album" width="450px" heigth="235px">
 </div>
 
 ## Executar Localmente
